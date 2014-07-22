@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="Legion.Entity.View.Unit.PlayerView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignWidth="48" d:DesignHeight="48" >
+
+	<Grid x:Name="LayoutRoot" Background="Transparent" CacheMode="BitmapCache" >
+
+		<Polygon Name="shapeNormal" Points="8,24 16,20 40,24 18,26 8,24 " Fill="Azure" Stroke="PowderBlue">
+			
+		</Polygon>
+
+		<Polygon Name="shapeUp" Points="8,24 16,16 40,24 18,28 8,24 " Fill="LightBlue" Stroke="PowderBlue"
+				 Visibility="Collapsed">
+		</Polygon>
+
+		<Polygon Name="shapeDown" Points="8,24 16,32 40,24 18,20 8,24 " Fill="Azure" Stroke="PowderBlue"
+				 Visibility="Collapsed">
+		</Polygon>
+		
+	</Grid>
+</UserControl>

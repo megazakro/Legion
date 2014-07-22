@@ -1,0 +1,55 @@
+﻿
+body
+{
+	padding: 2px;
+	
+}
+
+div.Infomation
+{
+	padding: 2px 0px 2px 5px;
+	width: 50%;
+}
+
+.Infomation h4
+{
+	margin: 10px 2px 3px 2px;
+	padding: 2px 0px 2px 5px;
+	border: solid 0px #66cc33;
+	border-left-width: 3px ;
+	border-bottom-width: 1px;
+}
+
+.Infomation h5
+{
+	margin: 3px 0px;
+	font-weight: normal;
+	font-size: medium;
+}
+
+.Infomation h6
+{
+	margin: 6px 0px 6px 0px;
+	font-weight: normal;
+	font-size: medium;
+}
+
+.Infomation div.Detail
+{
+	padding: 2px 0px 2px 10px;
+	font-size: medium;
+}
+
+.Infomation div.Detail table
+{
+	border: solid 1px #66cc33;
+}
+
+.Infomation ul li
+{
+	margin:5px 0px 5px 0px;
+}
+
+.Infomation ul li span
+{
+}

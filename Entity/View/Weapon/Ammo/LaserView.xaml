@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="Legion.Entity.View.Weapon.Ammo.LaserView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" d:DesignHeight="24" d:DesignWidth="400">
+	<Grid x:Name="LayoutRoot" Background="Transparent" Canvas.ZIndex="256" CacheMode="BitmapCache" >
+		
+		<!--
+		<Path x:Name="outerTop" Stroke="Lavender" StrokeThickness="4" Opacity="0.8"
+			  Data="M10,12 C0,12 400,12 400,12"></Path>
+		<Path x:Name="outerBottom" Stroke="Lavender" StrokeThickness="4" Opacity="0.8"
+			  Data="M10,12 C0,12 400,12 400,12"></Path>
+				<Path x:Name="innerTop" StrokeThickness="2" Opacity="0.0"
+			  Data="M10,12 C5,12 0,12 400,12">
+			<Path.Stroke>
+				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+					<GradientStop Color="Lavender" Offset="0.2" />
+					<GradientStop Color="DodgerBlue" Offset="1.0" />
+				</LinearGradientBrush>
+			</Path.Stroke>
+		</Path>
+
+		<Path x:Name="innerBottom" Stroke="DarkBlue" StrokeThickness="2" Opacity="0.0"
+			  Data="M10,12 C5,12 0,12 400,12"></Path>
+		-->
+
+		<Path x:Name="outer" Opacity="1.0" StrokeThickness="4"
+			  Data="M10,12 C0,12 400,12 400,12">
+			<Path.Stroke>
+				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+					<GradientStop Color="Lavender" Offset="0.0" />
+					<GradientStop Color="White" Offset="0.2" />
+					<GradientStop Color="White" Offset="0.8" />
+					<GradientStop Color="Lavender" Offset="1.0" />
+				</LinearGradientBrush>
+			</Path.Stroke>
+		</Path>
+
+		<Path x:Name="core" Opacity="1.0" StrokeThickness="2" 
+			  Data="M10,12 C5,12 0,12 400,12">
+			<Path.Stroke>
+				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+					<GradientStop Color="SteelBlue" Offset="0.0" />
+					<GradientStop Color="Navy" Offset="0.5" />
+					<GradientStop Color="SteelBlue" Offset="1.0" />
+				</LinearGradientBrush>
+			</Path.Stroke>
+		</Path>
+
+	</Grid>
+</UserControl>

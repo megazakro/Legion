@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Legion</title>
+
+	<link type="text/css" rel="Stylesheet" href="css/style.css" />
+
+	<style type="text/css">
+		html, body
+		{
+			height: 100%;
+			overflow: auto;
+		}
+		body
+		{
+			padding: 0;
+			margin: 0;
+		}
+		#silverlightControlHost
+		{
+			height: 100%;
+			text-align: center;
+		}
+	</style>
+	<script type="text/javascript" src="Silverlight.js"></script>
+	<script type="text/javascript">
+		function onSilverlightError(sender, args) {
+			var appSource = "";
+			if (sender != null && sender != 0) {
+				appSource = sender.getHost().Source;
+			}
+
+			var errorType = args.ErrorType;
+			var iErrorCode = args.ErrorCode;
+
+			if (errorType == "ImageError" || errorType == "MediaError") {
+				return;
+			}
+
+			var errMsg = "Silverlight アプリケーションのハンドルされないエラー " + appSource + "\n";
+
+			errMsg += "コード: " + iErrorCode + "    \n";
+			errMsg += "カテゴリ: " + errorType + "       \n";
+			errMsg += "メッセージ: " + args.ErrorMessage + "     \n";
+
+			if (errorType == "ParserError") {
+				errMsg += "ファイル: " + args.xamlFile + "     \n";
+				errMsg += "行: " + args.lineNumber + "     \n";
+				errMsg += "位置: " + args.charPosition + "     \n";
+			}
+			else if (errorType == "RuntimeError") {
+				if (args.lineNumber != 0) {
+					errMsg += "行: " + args.lineNumber + "     \n";
+					errMsg += "位置: " + args.charPosition + "     \n";
+				}
+				errMsg += "メソッド名: " + args.methodName + "     \n";
+			}
+
+			throw new Error(errMsg);
+		}
+	</script>
+</head>
+<body>
+	<form id="form1" runat="server" style="height: 100%">
+	<div id="silverlightControlHost" style="width: 800px; height: 450px;">
+		<object data="data:application/x-silverlight-2," type="application/x-silverlight-2"
+			width="100%" height="100%">
+			<param name="source" value="ClientBin/Legion.xap" />
+			<param name="onError" value="onSilverlightError" />
+			<param name="background" value="white" />
+			<param name="minRuntimeVersion" value="4.0.50401.0" />
+			<param name="autoUpgrade" value="true" />
+			<param name="EnableGPUAcceleration" value="true" />
+			<param name="EnableCacheVisualization" value="false" />
+			<param name="enableFramerateCounter" value="false" />
+			<a href="http://go.microsoft.com/fwlink/?LinkID=149156&v=4.0.50401.0" style="text-decoration: none">
+				<img src="http://go.microsoft.com/fwlink/?LinkId=161376" alt="Microsoft Silverlight の取得"
+					style="border-style: none" />
+			</a>
+		</object>
+		<iframe id="_sl_historyFrame" style="visibility: hidden; height: 0px; width: 0px;
+			border: 0px"></iframe>
+	</div>
+	<div class="Infomation">
+		<h4>遊び方</h4>
+		<div class="Detail">敵を倒して自機を強化しつつ、ハイスコアを狙います。<br />
+			自機のARMORが0になるとゲームオーバーになります。<br />
+		</div>
+
+		<h4>操作方法</h4>
+		<div class="Detail">
+			<h5>自機の操作</h5>
+			<table>
+				<tr>
+					<td></td>
+					<td>上移動：Wキー</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>左移動：Aキー</td>
+					<td></td>
+					<td>右移動：Dキー</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>下移動：Sキー</td>
+					<td></td>
+				</tr>
+			</table>
+
+			<h5>攻撃</h5>
+			<table>
+				<tr>
+					<td>レーザー：Spaceキー</td>
+				</tr>
+				<tr>
+					<td>サブウェポン切り替え：PキーまたはXキー（サブウェポンは自動攻撃です）</td>
+				</tr>
+			</table>
+
+			<h5>その他</h5>
+			<table>
+				<tr>
+					<td>スピードアップ：+キー、Kキー</td>
+				</tr>
+				<tr>
+					<td>スピードダウン：-キー、Jキー</td>
+				</tr>
+			</table>
+		</div>
+
+		<h4>ゲームシステム</h4>
+		<div class="Detail">
+			<ul>
+				<li>
+					<h6>ゲームモードについて</h6>
+					<ul>
+						<li>SURVIVAL<br/>
+							自機が倒されるまで終わらないモードです。
+						</li>
+						<li>TIME ATTACK<br/>
+							5分間の制限時間が設定されたモードです。
+						</li>
+					</ul>
+				</li>
+				<li>
+					<h6>自機の回復について</h6>
+					<span>
+					敵の攻撃等で減少したARMORは一定時間ごとに回復していきます。<br />
+					回復量は、ARMORの最大値に応じて増加します。<br />
+					ARMORの最大値は、トータルの回復量に応じて増加します。
+					</span>
+				</li>
+				<li>
+					<h6>自機の強化について</h6>
+					敵に止めをさした方法に応じて、各部位に経験値(EXP)が入ります。<br />
+					経験値が目標経験値を達成すると、部位がレベルアップし、強化されます。
+					<ul>
+						<li>体当たり<br />
+							ARMORが強化されます。
+							LV毎にARMORの回復量が向上します。
+						</li>
+						<li>レーザー<br />
+							LASERが強化されます。
+							LV毎に威力、攻撃範囲、発射数が向上します。
+						</li>
+						<li>ガン<br />
+							GUNが強化されます。
+							LV毎に威力、発射速度、発射数が向上します。
+						</li>
+						<li>ミサイル<br />
+							MISSILEが強化されます。
+							LV毎に威力、発射速度、発射数、命中精度が向上します。
+						</li>
+
+					</ul>
+				</li>
+			</ul>
+		</div>
+
+	</div>
+	</form>
+</body>
+</html>
